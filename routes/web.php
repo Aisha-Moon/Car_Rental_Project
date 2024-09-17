@@ -13,8 +13,12 @@ Route::get('/', [PageController::class, 'dashboard']);
 
 
 
-
 Route::get('admin/dashboard', [CustomerController::class, 'admin_dashboard']);
 Route::get('admin/car/list', [CarController::class, 'car_list']);
 Route::get('admin/car/add', [CarController::class, 'car_add']);
+Route::post('admin/car/add', [CarController::class, 'addCar']);
+Route::get('/admin/car/edit/{id}', [CarController::class, 'edit_page']);
+Route::put('/admin/car/edit/{id}', [CarController::class, 'update']);
+Route::get('/admin/car/delete/{id}', [CarController::class, 'delete']);
+
 

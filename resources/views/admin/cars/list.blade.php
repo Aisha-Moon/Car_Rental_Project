@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="pagetitle">
-        
+
         <h1>Car List</h1>
         <nav>
             <ol class="breadcrumb">
@@ -37,11 +37,12 @@
                                     <th>Car Type</th>
                                     <th>Daily Rent Price</th>
                                     <th>Availability Status</th>
+                                    <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @forelse ($cars as $car)
+                                @forelse ($cars as $car)
                                     <tr>
                                         <td>{{ $car->id }}</td>
                                         <td>{{ $car->name }}</td>
@@ -50,7 +51,8 @@
                                         <td>{{ $car->year }}</td>
                                         <td>{{ $car->car_type }}</td>
                                         <td>${{ number_format($car->daily_rent_price, 2) }}</td>
-                                        <td>{{ $car->availability == 'available' ? 'Available' : 'Not Available' }}</td>
+                                        <td>{{ $car->availability == 1 ? 'Available' : 'Not Available' }}</td>
+                                        <td><img src="{{ asset('images/cars/'.$car->image) }}" alt="Car Image" width="100"></td>
                                         <td>
                                             <a href="{{ url('admin/car/edit/'.$car->id) }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                                             <a onclick="return confirm('Are you sure you want to delete this car?')" href="{{ url('admin/car/delete/'.$car->id) }}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
@@ -60,11 +62,11 @@
                                     <tr>
                                         <td colspan="9" style="text-align: center; color: red;">No Cars Found</td>
                                     </tr>
-                                @endforelse --}}
+                                @endforelse
                             </tbody>
                         </table>
 
-                        {{-- {{ $cars->links() }} <!-- Pagination links --> --}}
+                        {{-- {{ $cars->links() }} --}}
 
                     </div>
                 </div>
