@@ -162,13 +162,16 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="{{ asset('assets') }}/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            @auth
             <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }} {{ Auth::user()->last_name }}</span>
-          </a><!-- End Profile Iamge Icon -->
+        @endauth
+                  </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-
+              @auth
               <span>{{ Auth::user()->email }}</span>
+              @endauth
             </li>
             <li>
               <hr class="dropdown-divider">

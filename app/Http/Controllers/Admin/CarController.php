@@ -11,11 +11,13 @@ class CarController extends Controller
 {
     public function car_list(){
         $data['cars']=Car::all();
+        $data['header_title'] = "Car List";
         return view('admin.cars.list',$data);
     }
     public function car_add(){
+        $data['header_title'] = "Add Car";
 
-        return view('admin.cars.add');
+        return view('admin.cars.add',$data);
     }
     public function addCar(CarRequest $request)
     {
@@ -43,6 +45,7 @@ class CarController extends Controller
     }
     public function edit_page($id)
     {
+        $data['header_title'] = "Edit Car";
         $data['getCar'] = Car::findOrFail($id);
 
         return view('admin.cars.edit', $data);

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Admin\CustomerController;
@@ -22,3 +23,14 @@ Route::put('/admin/car/edit/{id}', [CarController::class, 'update']);
 Route::get('/admin/car/delete/{id}', [CarController::class, 'delete']);
 
 
+Route::prefix('admin')->name('admin.')->group(function () {
+     Route::resource('rental', RentalController::class)->except(['show']);
+ });
+ 
+ Route::get('rental/ongoing/{id}', [RentalController::class, 'ongoing']);
+ Route::get('rental/cancelled/{id}', [RentalController::class, 'cancelled']);
+ Route::get('rental/completed/{id}', [RentalController::class, 'completed']);
+
+
+
+ 

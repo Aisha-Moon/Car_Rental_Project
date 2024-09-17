@@ -23,7 +23,6 @@ class CustomerController extends Controller
     }
     public function register_post(Request $request)
 {
-    // Validate the user input
     $userData = $request->validate([
         'name' => 'required|string',
         'email' => 'required|email|unique:users,email',  
@@ -42,7 +41,6 @@ class CustomerController extends Controller
     $user->address = trim($request->address);  
     $user->save();
 
-    // Redirect to home page with success message
     return redirect('/login')->with('success', 'Registration successful');
 }
 

@@ -18,6 +18,14 @@
           <span>Manage Cars</span>
         </a>
       </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url('admin/rental') }}" @if(Request::segment(2)=='rental') @else collapsed @endif">
+          <i class="bi bi-person"></i>
+          <span>Manage Rentals</span>
+        </a>
+      </li>
      
 
      
@@ -26,7 +34,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-login.html">
           <i class="bi bi-box-arrow-in-right"></i>
-          <span>Profile Update</span>
+          <span>Manage Customers</span>
         </a>
       </li>
 
