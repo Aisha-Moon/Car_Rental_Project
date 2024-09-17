@@ -1,9 +1,10 @@
 
-@extends('admin.layouts.app')
+@extends('admin.layouts.app1')
 
 @section('content')
 
     <div class="pagetitle">
+        
         <h1>Car List</h1>
         <nav>
             <ol class="breadcrumb">
