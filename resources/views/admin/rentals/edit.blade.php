@@ -89,7 +89,7 @@
                                         <option value="">Select Status</option>
                                         <option value="ongoing" {{ $rental->status == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
                                         <option value="completed" {{ $rental->status == 'completed' ? 'selected' : '' }}>Completed</option>
-                                        <option value="cancelled" {{ $rental->status == 'canceled' ? 'selected' : '' }}>Canceled</option>
+                                        <option value="cancelled" {{ $rental->status == 'cancelled' ? 'selected' : '' }}>Canceled</option>
                                     </select>
                                     <span style="color:red;">{{ $errors->first('status') }}</span>
                                 </div>

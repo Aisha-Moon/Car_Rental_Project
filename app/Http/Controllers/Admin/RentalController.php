@@ -72,7 +72,7 @@ class RentalController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
             'car_id' => 'required|exists:cars,id',
             'start_date' => 'required|date',
@@ -82,9 +82,10 @@ class RentalController extends Controller
         ]);
 
         $rental = Rental::findOrFail($id);
-        $rental->update($request->all());
+        $rental->update($validated);
+ 
 
-        return redirect()->route('admin.rentals.index')->with('success', 'Rental updated successfully.');
+        return redirect()->route('admin.rental.index')->with('success', 'Rental updated successfully.');
     }
 
     public function destroy($id)
