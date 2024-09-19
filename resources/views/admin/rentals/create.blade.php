@@ -101,15 +101,17 @@
 <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
+{{-- <script>
     $(function() {   
-          var today = new Date();
+      
+       var unavailableDates = @json($unavailableDates);
+      function disableDates (date) {
+
+            var today = new Date();
             today.setHours(0, 0, 0, 0);
             var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
 
-            //if (date < today || unavailableDates.indexOf(string) != -1){
-
-            if (date < today){
+            if (date < today || unavailableDates.indexOf(string) != -1){
                return [false]
             }
             else {
@@ -121,4 +123,4 @@
             beforeShowDay: disableDates
         });
     });
-</script>
+</script> --}}

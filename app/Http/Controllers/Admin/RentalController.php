@@ -37,13 +37,13 @@ class RentalController extends Controller
         $data['cars'] = Car::where('availability', 1)->get();
         $data['users'] = User::where('role', 'customer')->get();
 
-        //$data['unavailableDates'] = Rental::where('status', 'Ongoing')->where('car_id',  $data['cars']->id)->get()->flatMap(function ($rental) {
-        //    return $this->getDateRange($rental->start_date, $rental->end_date);
-        //})->unique()->values()->toArray();
+        // $data['unavailableDates'] = Rental::where('status', 'ongoing')->where('car_id', $data['car']->id)->get()->flatMap(function ($rental) {
+        //     return $this->getDateRange($rental->start_date, $rental->end_date);
+        // })->unique()->values()->toArray();
 
         return view('admin.rentals.create', $data);
     }
-    //
+ 
 
     public function store(Request $request)
     {

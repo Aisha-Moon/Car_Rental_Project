@@ -48,17 +48,13 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="" class="col-sm-2 col-form-label">Car Type <span class="text-danger">*</span></label>
+                                <label for="car_type" class="col-sm-2 col-form-label">Car Type <span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <select name="car_type" class="form-control" required>
-                                        <option value="">Select Car Type</option>
-                                        <option value="SUV" {{ old('car_type') == 'SUV' ? 'selected' : '' }}>SUV</option>
-                                        <option value="Sedan" {{ old('car_type') == 'Sedan' ? 'selected' : '' }}>Sedan</option>
-                                        <!-- Add other car types as needed -->
-                                    </select>
+                                    <input type="text" name="car_type" id="car_type" class="form-control" required value="{{ old('car_type') }}">
                                     <span style="color:red;">{{ $errors->first('car_type') }}</span>
                                 </div>
                             </div>
+                            
                             <div class="row mb-3">
                                 <label for="" class="col-sm-2 col-form-label">Daily Rent Price <span class="text-danger">*</span></label>
                                 <div class="col-sm-10">

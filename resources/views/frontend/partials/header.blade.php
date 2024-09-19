@@ -12,31 +12,52 @@
                     </div>
                  </div>
               </div>
-              <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                 <nav class="navigation navbar navbar-expand-md navbar-dark ">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarsExample04">
+              <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9"> 
+               <nav class="navigation navbar navbar-expand-md navbar-dark">
+                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                       <span class="navbar-toggler-icon"></span>
+                   </button>
+                   <div class="collapse navbar-collapse" id="navbarsExample04">
                        <ul class="navbar-nav mr-auto">
-                          <li class="nav-item active">
-                             <a class="nav-link" href="{{url('/')}}">Home</a>
-                          </li>
-                          <li class="nav-item">
-                             <a class="nav-link" href="{{url('about')}}">About</a>
-                          </li>
-                          <li class="nav-item">
-                             <a class="nav-link" href="{{url('car')}}">Rentals</a>
-                          </li>
-                        
-                         
-                          <li class="nav-item">
-                             <a class="nav-link" href="{{url('contact')}}">Contact</a>
-                          </li>
+                           <li class="nav-item active">
+                               <a class="nav-link" href="{{ url('/') }}">Home</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="{{ url('about') }}">About</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="{{ url('car') }}">Rentals</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="nav-link" href="{{ url('contact') }}">Contact</a>
+                           </li>
+           
+                           <!-- Check if user is authenticated -->
+                           @if(Auth::check())
+                               <!-- User is logged in -->
+                               <li class="nav-item">
+                                   <a class="nav-link" href="{{ url('account') }}" style="display: flex; align-items: center;">
+                                       <i class="fas fa-user" style="font-size: 20px; margin-right: 5px;"></i> Account
+                                   </a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="btn btn-outline-light" href="{{ url('logout') }}">Logout</a>
+                               </li>
+                           @else
+                               <!-- User is not logged in -->
+                               <li class="nav-item">
+                                   <a class="btn btn-outline-light" href="{{ url('login') }}">Login</a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="btn btn-outline-light" href="{{ url('register') }}">Register</a>
+                               </li>
+                           @endif
                        </ul>
-                    </div>
-                 </nav>
-              </div>
+                   </div>
+               </nav>
+           </div>
+           
+           
            </div>
         </div>
      </div>
