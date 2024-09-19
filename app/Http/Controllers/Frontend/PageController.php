@@ -11,14 +11,13 @@ class PageController extends Controller
 {
     public function dashboard(Request $request)
     {
-        // Query the available cars
+   
         $query = Car::where('availability', 1);
     
-        // Get distinct car types and brands for filters
         $carTypes = Car::select('car_type')->distinct()->pluck('car_type');
         $brands = Car::select('brand')->distinct()->pluck('brand');
     
-        // Apply filters if set
+        //filters
         if ($request->filled('car_type')) {
             $query->where('car_type', $request->car_type);
         }
@@ -31,7 +30,7 @@ class PageController extends Controller
             $query->where('daily_rent_price', '<=', $request->price_max);
         }
     
-        // Fetch filtered cars
+      
         $data['cars'] = $query->get();
         $data['carTypes'] = $carTypes;
         $data['brands'] = $brands;

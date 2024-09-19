@@ -11,50 +11,49 @@
          </div>
       </div>
 
-      <!-- Filter Section -->
-      <div class="row mb-4">
-         <div class="col-md-12">
-            <form action="{{ url('cars/filter') }}" method="GET" class="form-inline">
-               <!-- Car Type Filter -->
-               <div class="form-group mr-3">
-                  <label for="car_type" class="mr-2">Car Type</label>
-                  <select name="car_type" id="car_type" class="form-control">
-                     <option value="">All</option>
-                     @foreach($carTypes as $type)
-                        <option value="{{ $type }}" {{ request('car_type') == $type ? 'selected' : '' }}>
-                           {{ ucfirst($type) }}
-                        </option>
-                     @endforeach
-                  </select>
-               </div>
-
-               <!-- Brand Filter -->
-               <div class="form-group mr-3">
-                  <label for="brand" class="mr-2">Brand</label>
-                  <select name="brand" id="brand" class="form-control">
-                     <option value="">All</option>
-                     @foreach($brands as $brand)
-                        <option value="{{ $brand }}" {{ request('brand') == $brand ? 'selected' : '' }}>
-                           {{ ucfirst($brand) }}
-                        </option>
-                     @endforeach
-                  </select>
-               </div>
-
-            <!-- Price Filter -->
-               <div class="form-group mr-3">
-                  <label for="price_max" class="mr-2">Max Price (per day)</label>
-                  <input type="number" name="price_max" id="price_max" class="form-control" value="{{ request('price_max') }}" min="0">
-               </div>
-
-
-               <!-- Submit Button -->
-               <div class="form-group">
-                  <button type="submit" class="btn btn-dark">Filter</button>
-               </div>
-            </form>
+    <!-- Filter Section -->
+<div class="row mb-4">
+   <div class="col-md-12">
+      <form action="{{ url('cars/filter') }}" method="GET" class="form-inline" style="background-color: #343a40; padding: 20px; border-radius: 10px; color: white;">
+         <div class="form-group mr-3">
+            <label for="car_type" class="mr-2">Car Type</label>
+            <select name="car_type" id="car_type" class="form-control">
+               <option value="">All</option>
+               @foreach($carTypes as $type)
+                  <option value="{{ $type }}" {{ request('car_type') == $type ? 'selected' : '' }}>
+                     {{ ucfirst($type) }}
+                  </option>
+               @endforeach
+            </select>
          </div>
-      </div>
+
+         <!-- Brand Filter -->
+         <div class="form-group mr-3">
+            <label for="brand" class="mr-2">Brand</label>
+            <select name="brand" id="brand" class="form-control">
+               <option value="">All</option>
+               @foreach($brands as $brand)
+                  <option value="{{ $brand }}" {{ request('brand') == $brand ? 'selected' : '' }}>
+                     {{ ucfirst($brand) }}
+                  </option>
+               @endforeach
+            </select>
+         </div>
+
+         <!-- Price Filter -->
+         <div class="form-group mr-3">
+            <label for="price_max" class="mr-2">Max Price (per day)</label>
+            <input type="number" name="price_max" id="price_max" class="form-control" value="{{ request('price_max') }}" min="0">
+         </div>
+
+         <!-- Submit Button -->
+         <div class="form-group">
+            <button type="submit" class="btn btn-light">Filter</button>
+         </div>
+      </form>
+   </div>
+</div>
+
 
       <!-- Car Listings Section -->
       <div class="row">

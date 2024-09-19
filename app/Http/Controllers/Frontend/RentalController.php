@@ -43,10 +43,23 @@ class RentalController extends Controller
             ->get();
 
         $pastBookings = Rental::where('user_id', $user->id)
-            ->whereIn('status', ['completed', 'canceled'])
+            ->whereIn('status', ['completed', 'cancelled'])
             ->get();
 
-        return view('bookings.index', compact('currentBookings', 'pastBookings'));
+        return view('frontend.rental.index', compact('currentBookings', 'pastBookings'));
     }
+    public function cancel($id)
+{
+    $booking = Rental::where('id', $id)->where('user_id', Auth::user()->id)->first();
+
+    if ($booking && $booking->start_date > now()) {
+        $booking->status = 'cancelled';
+        $booking->save();
+        return redirect()->back()->with('success', 'Booking canceled successfully.');
+    }
+
+    return redirect()->back()->with('error', 'Cannot cancel booking. Rental may have already started.');
+}
+
 
 }

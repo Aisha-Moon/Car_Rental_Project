@@ -54,3 +54,8 @@ Route::controller(App\Http\Controllers\Frontend\RentalController::class)->group(
 
 Route::get('/cars/filter', [App\Http\Controllers\Frontend\CarController::class, 'filter'])->name('cars.filter');
 
+Route::get('/bookings', [App\Http\Controllers\Frontend\RentalController::class, 'index'])->name('bookings.index');
+
+Route::put('/bookings/{id}/cancel', [App\Http\Controllers\Frontend\RentalController::class, 'cancel'])->name('bookings.cancel');
+
+

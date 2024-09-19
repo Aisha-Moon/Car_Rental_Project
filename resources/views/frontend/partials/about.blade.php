@@ -4,13 +4,12 @@
            <div class="col-md-5">
               <div class="titlepage">
                  <h2>About Us</h2>
-                 <p>The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates, websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum. </p>
-                 <a class="read_more" href="Javascript:void(0)"> Read More</a>
+                <p> Welcome to DriveNow, where we redefine your car rental experience. Established in 2015, we are dedicated to providing exceptional service and a diverse fleet of high-quality vehicles. Our mission is to ensure your journey is seamless, whether for business or leisure. With a focus on customer satisfaction, we strive to meet your unique needs with reliability and integrity. At DriveNow, we’re not just about rentals; we’re about creating lasting relationships with our valued customers.</p>                 <a class="read_more" href="Javascript:void(0)"> Read More</a>
               </div>
            </div>
            <div class="col-md-7">
               <div class="about_img">
-                 <figure><img src="{{ asset('frontend') }}/images/about.png" alt="#"/></figure>
+                 <figure><img src="{{ asset('frontend') }}/images/car2.jpeg" alt="#"/></figure>
               </div>
            </div>
         </div>

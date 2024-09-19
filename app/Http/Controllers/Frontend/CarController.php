@@ -8,11 +8,10 @@ use App\Http\Controllers\Controller;
 
 class CarController extends Controller
 {
-    // CarController.php
 
 public function filter(Request $request)
 {
-    // Get filter inputs
+ 
     $carType = $request->input('car_type');
     $brand = $request->input('brand');
     $priceMax = $request->input('price_max');

@@ -26,15 +26,15 @@
                                <a class="nav-link" href="{{ url('about') }}">About</a>
                            </li>
                            <li class="nav-item">
-                               <a class="nav-link" href="{{ url('car') }}">Rentals</a>
+                               <a class="nav-link" href="{{ url('bookings') }}">Rentals</a>
                            </li>
                            <li class="nav-item">
                                <a class="nav-link" href="{{ url('contact') }}">Contact</a>
                            </li>
            
-                           <!-- Check if user is authenticated -->
+                          
                            @if(Auth::check())
-                               <!-- User is logged in -->
+                             
                                <li class="nav-item">
                                    <a class="nav-link" href="{{ url('account') }}" style="display: flex; align-items: center;">
                                        <i class="fas fa-user" style="font-size: 20px; margin-right: 5px;"></i> Account
@@ -44,7 +44,7 @@
                                    <a class="btn btn-outline-light" href="{{ url('logout') }}">Logout</a>
                                </li>
                            @else
-                               <!-- User is not logged in -->
+                            
                                <li class="nav-item">
                                    <a class="btn btn-outline-light" href="{{ url('login') }}">Login</a>
                                </li>
