@@ -63,4 +63,15 @@ class PageController extends Controller
         return $dates;
     }
 
+
+    public function show(){
+        return view('frontend.home.account');
+    }
+
+    public function about(){
+        return view('frontend.home.about');
+    }
+    public function contact(){
+        return view('frontend.home.contact');
+    }
 }

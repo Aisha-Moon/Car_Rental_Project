@@ -53,7 +53,7 @@ class RentalController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'total_cost' => 'required|numeric|min:0',
-            'status' => 'required|in:ongoing,completed,cancelled',
+            'status' => 'required|in:pending,ongoing,completed,cancelled',
 
         ]);
 
@@ -78,7 +78,7 @@ class RentalController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'total_cost' => 'required|numeric|min:0',
-            'status' => 'required|in:ongoing,completed,cancelled',
+            'status' => 'required|in:pending,ongoing,completed,cancelled',
         ]);
 
         $rental = Rental::findOrFail($id);
@@ -127,6 +127,12 @@ class RentalController extends Controller
     public function completed($id){
         $rental=Rental::findOrFail($id);
         $rental->status='completed';
+        $rental->save();
+        return redirect()->back();
+    }
+    public function pending($id){
+        $rental=Rental::findOrFail($id);
+        $rental->status='pending';
         $rental->save();
         return redirect()->back();
     }

@@ -1,3 +1,7 @@
+@extends('frontend.home.index')
+@section('content')
+@include('frontend.partials.header')
+
 <div class="contact" id="contact">
      <div class="container">
         <div class="row">
@@ -39,3 +43,7 @@
         </div>
      </div>
   </div>
+
+  @include('frontend.partials.footer')
+   
+@endsection

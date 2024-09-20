@@ -4,15 +4,14 @@
 @include('frontend.partials.header')
 
 
-
 <style>
    
     body {
         background-color: #f8f9fa;
-    }
+}
 
     .manage-bookings-container {
-        background-color: #ffffff; /* White background for content container */
+        background-color: #ffffff; 
         color: #333333; /* Dark text for readability */
         border-radius: 10px;
         padding: 20px;
@@ -74,7 +73,7 @@
                             <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="btn btn-danger">Cancel Booking</button>
+                                <button onclick="return confirm('Are you sure you want to cancel this booking?')" type="submit" class="btn btn-danger">Cancel Booking</button>
                             </form>
                         @endif
                     </div>
@@ -106,4 +105,6 @@
         @endforelse
     </div>
 </div>
+@include('frontend.partials.footer')
+
 @endsection

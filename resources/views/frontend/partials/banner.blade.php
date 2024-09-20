@@ -46,8 +46,8 @@
                              <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
                           </div>
                           <div class="col-md-12">
-                             <button class="book_btn">Book Now</button>
-                          </div>
+                           <a class="btn btn-danger btn-large book_btn" href="#cars">Book Now</a>
+                        </div>
                        </div>
                     </form>
                  </div>

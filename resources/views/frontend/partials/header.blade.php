@@ -23,7 +23,7 @@
                                <a class="nav-link" href="{{ url('/') }}">Home</a>
                            </li>
                            <li class="nav-item">
-                               <a class="nav-link" href="{{ url('about') }}">About</a>
+                               <a class="nav-link" href="{{ url('/about') }}">About</a>
                            </li>
                            <li class="nav-item">
                                <a class="nav-link" href="{{ url('bookings') }}">Rentals</a>
@@ -41,15 +41,15 @@
                                    </a>
                                </li>
                                <li class="nav-item">
-                                   <a class="btn btn-outline-light" href="{{ url('logout') }}">Logout</a>
+                                   <a class="btn btn-danger" href="{{ url('logout') }}">Logout</a>
                                </li>
                            @else
                             
                                <li class="nav-item">
-                                   <a class="btn btn-outline-light" href="{{ url('login') }}">Login</a>
+                                   <a class="btn btn-warning" href="{{ url('login') }}">Login</a>
                                </li>
-                               <li class="nav-item">
-                                   <a class="btn btn-outline-light" href="{{ url('register') }}">Register</a>
+                               <li class="nav-item mr-4">
+                                   <a class="btn btn-secondary" href="{{ url('register') }}">Register</a>
                                </li>
                            @endif
                        </ul>

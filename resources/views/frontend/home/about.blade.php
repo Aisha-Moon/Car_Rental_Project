@@ -1,3 +1,8 @@
+@extends('frontend.home.index')
+@section('content')
+
+@include('frontend.partials.header')
+
 <div class="about" id="about">
      <div class="container-fluid">
         <div class="row">
@@ -16,3 +21,7 @@
         </div>
      </div>
   </div>
+@include('frontend.partials.footer')
+
+     
+@endsection

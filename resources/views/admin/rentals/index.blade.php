@@ -48,6 +48,8 @@
                                         <td>
                                              @if ($rental->status == 'ongoing')
                                                  <span class="badge bg-warning text-dark">Ongoing</span>
+                                             @elseif ($rental->status == 'pending')
+                                                 <span class="badge bg-secondary text-dark">Pending</span>
                                              @elseif ($rental->status == 'completed')
                                                  <span class="badge bg-success">Completed</span>
                                              @elseif ($rental->status == 'cancelled')
@@ -73,6 +75,7 @@
                                          </td>
                                          
                                         <td style="width:300px">
+                                             <a href="{{ url('rental/pending', $rental->id) }}" class="btn btn-warning">Pending</a>
                                              <a href="{{ url('rental/ongoing', $rental->id) }}" class="btn btn-warning">Ongoing</a>
                                              <a href="{{ url('rental/completed', $rental->id) }}" class="btn btn-success">Completed</a>
                                              <a href="{{ url('rental/cancelled', $rental->id) }}" class="btn btn-danger">Cancelled</a>

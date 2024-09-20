@@ -87,6 +87,7 @@
                                 <div class="col-sm-10">
                                     <select id="status" name="status" class="form-control" required>
                                         <option value="">Select Status</option>
+                                        <option value="pending" {{ $rental->status == 'pending' ? 'selected' : '' }}>Pending</option>
                                         <option value="ongoing" {{ $rental->status == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
                                         <option value="completed" {{ $rental->status == 'completed' ? 'selected' : '' }}>Completed</option>
                                         <option value="cancelled" {{ $rental->status == 'cancelled' ? 'selected' : '' }}>Canceled</option>

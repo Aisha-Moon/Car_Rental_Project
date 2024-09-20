@@ -38,7 +38,7 @@ class CustomerController extends Controller
     $user = new User();
     $user->name = trim($request->name);
     $user->email = trim($request->email);
-    $user->password = Hash::make($request->password);
+    $user->password = $request->password;
     $user->phone_number = trim($request->phone_number);  
     $user->address = trim($request->address);  
     $user->save();
@@ -48,16 +48,23 @@ class CustomerController extends Controller
 
 public function login_post(Request $request)
 {
-    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-        if (Auth::user()->role == 'admin') {
-            return redirect('admin/dashboard');  
-        }
-        else if (Auth::user()->role == 'customer') {
-            return redirect('/');  
+    $user = User::where('email', $request->email)->first();
+
+    if ($user && $user->password === $request->password) {
+        Auth::login($user);
+
+        if ($user->isAdmin()) {
+            return redirect('admin/dashboard');
+        } 
+        else if ($user->isCustomer()) {
+            return redirect('/');
         }
     } 
-    return redirect()->back()->with('error', 'Please enter a valid email address or password');
+
+    return redirect()->back()->with('error', 'Invalid email or password');
 }
+
+
 
 public function admin_dashboard(Request $request)
 {
@@ -105,7 +112,7 @@ public function admin_dashboard(Request $request)
             'phone_number' => $request->phone_number,
             'address' => $request->address,
             'role' => 'customer',
-            'password'=>Hash::make($request->password)
+            'password'=>$request->password
 
         ]);
 
@@ -144,7 +151,7 @@ public function admin_dashboard(Request $request)
         $customer->address = $request->input('address');
     
         if ($request->filled('password')) {
-            $customer->password =Hash::make($request->password);
+            $customer->password =$request->password;
         }
     
         $customer->save();

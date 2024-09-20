@@ -77,6 +77,7 @@
                               <div class="col-sm-10">
                                   <select id="status" name="status" class="form-control" required>
                                       <option value="">Select Status</option>
+                                      <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending</option>
                                       <option value="ongoing" {{ old('status') == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
                                       <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed</option>
                                       <option value="cancelled" {{ old('status') == 'cancelled' ? 'selected' : '' }}>Canceled</option>
