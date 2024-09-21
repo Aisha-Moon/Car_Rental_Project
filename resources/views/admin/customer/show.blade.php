@@ -30,8 +30,8 @@
                                 @foreach($customer->rentals as $rental)
                                     <tr>
                                         <td>{{ $rental->car->name }}</td>
-                                        <td>{{ $rental->start_date }}</td>
-                                        <td>{{ $rental->end_date }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($rental->start_date)->format('F j, Y g:i A') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($rental->end_date)->format('F j, Y g:i A') }}</td>
                                         <td>{{ ucfirst($rental->status) }}</td>
                                     </tr>
                                 @endforeach

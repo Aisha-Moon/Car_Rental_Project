@@ -45,8 +45,9 @@
         <p>Thank you for renting with <strong>DriveNow</strong>!</p>
         <p class="car-details">
             <strong>Car:</strong> {{ $rental->car->name }}<br>
-            <strong>From:</strong> {{ $rental->start_date }}<br>
-            <strong>To:</strong> {{ $rental->end_date }}
+            <strong>From:</strong> {{ \Carbon\Carbon::parse($rental->start_date)->format('F j, Y g:i A') }}<br>
+            <strong>To:</strong> {{ \Carbon\Carbon::parse($rental->end_date)->format('F j, Y g:i A') }}<br>
+            
         </p>
         <div class="footer">
             <p>If you have any questions, feel free to contact us.</p>

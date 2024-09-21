@@ -63,8 +63,8 @@
                 <div class="row">
                     <div class="col-md-8">
                         <strong>Car:</strong> {{ $booking->car->name }} <br>
-                        <strong>From:</strong> {{ $booking->start_date }} <br>
-                        <strong>To:</strong> {{ $booking->end_date }} <br>
+                        <strong>From:</strong>{{ \Carbon\Carbon::parse($booking->start_date)->format('F j, Y g:i A') }} <br>
+                        <strong>To:</strong>{{ \Carbon\Carbon::parse($booking->end_date)->format('F j, Y g:i A') }} <br>
                         <strong>Status:</strong> {{ ucfirst($booking->status) }} <br>
                     </div>
                     <div class="col-md-4 text-end">
@@ -93,8 +93,8 @@
                 <div class="row">
                     <div class="col-md-8">
                         <strong>Car:</strong> {{ $booking->car->name }} <br>
-                        <strong>From:</strong> {{ $booking->start_date }} <br>
-                        <strong>To:</strong> {{ $booking->end_date }} <br>
+                        <strong>From:</strong>{{ \Carbon\Carbon::parse($booking->start_date)->format('F j, Y g:i A') }}<br>
+                        <strong>To:</strong>{{ \Carbon\Carbon::parse($booking->end_date)->format('F j, Y g:i A') }}<br>
                         <strong>Status:</strong> {{ ucfirst($booking->status) }} <br>
                     </div>
                 </div>

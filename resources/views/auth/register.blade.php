@@ -32,7 +32,7 @@
 
         <div class="col-12">
             <label for="mobile" class="form-label">Mobile Number</label>
-            <input value="{{ old('mobile') }}" type="number" name="mobile" class="form-control" id="mobile"
+            <input value="{{ old('phone_number') }}" type="number" name="phone_number" class="form-control" id="mobile"
             oninput="javascript: this.value=this.value.replace(/[^0-9]/g, '');
                 if(this.value.length > this.maxlength) this.value=this.value.slice(0,this.maxLength); " maxlength="10">
             <div class="invalid-feedback">Please, enter your Mobile Number!</div>
