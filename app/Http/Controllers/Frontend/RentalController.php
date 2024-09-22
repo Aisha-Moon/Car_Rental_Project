@@ -23,7 +23,7 @@ class RentalController extends Controller
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after:start_date',
         ]);
-    
+  
         $car = Car::find($carId);
         if (!$car) {
             return redirect()->back()->withErrors(['error' => 'Car does not exist.']);
@@ -41,13 +41,15 @@ class RentalController extends Controller
         $customerName = Auth::user()->name; 
         
     
-        // Send emails
-        try {
-            Mail::to($customerEmail)->send(new RentalDetailsToCustomer($rental));
-             Mail::to('admin@gmail.com')->send(new RentalNotificationToAdmin($customerName, $rental));
-        } catch (\Exception $e) {
-            Log::error('Email sending failed: ' . $e->getMessage());
-        }
+       // Send emails
+       try {
+           Mail::to($customerEmail)->send(new RentalDetailsToCustomer($rental));
+            Mail::to('admin@gmail.com')->send(new RentalNotificationToAdmin($customerName, $rental));
+       } catch (\Exception $e) {
+           Log::error('Email sending failed: ' . $e->getMessage());
+       }
+
+    
     
         return redirect()->route('car.details', $carId)->with('success', 'Booking successful!');
     }

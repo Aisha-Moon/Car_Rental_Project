@@ -51,11 +51,11 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Customer Routes
-    Route::middleware([UserMiddleware::class])->group(function () {
+    // Route::middleware([UserMiddleware::class])->group(function () {
         Route::get('/bookings', [App\Http\Controllers\Frontend\RentalController::class, 'index'])->name('bookings.index');
         Route::put('/bookings/{id}/cancel', [App\Http\Controllers\Frontend\RentalController::class, 'cancel'])->name('bookings.cancel'); 
     });
-});
+// });
 
 Route::get('/', [PageController::class, 'dashboard']); 
 Route::get('car-details/{id}', [PageController::class, 'car_details'])->name('car.details'); 
@@ -63,7 +63,7 @@ Route::get('car-details/{id}', [PageController::class, 'car_details'])->name('ca
 // booking and managing rentals
 Route::controller(App\Http\Controllers\Frontend\RentalController::class)->group(function () {
     Route::post('/add_booking/{carId}', 'bookCar')->name('add_booking');
-    Route::post('/cancel-booking/{id}', 'cancel')->name('bookings.cancel'); 
+    Route::put('/cancel-booking/{id}', 'cancel')->name('bookings.cancel'); 
 });
 
 // Car filtering
