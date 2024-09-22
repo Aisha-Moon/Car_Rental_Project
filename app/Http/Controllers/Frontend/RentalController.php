@@ -29,7 +29,6 @@ class RentalController extends Controller
             return redirect()->back()->withErrors(['error' => 'Car does not exist.']);
         }
     
-        // Create the rental record
         $rental = Rental::create([
             'car_id' => $carId,
             'user_id' => Auth::id(),
@@ -56,18 +55,34 @@ class RentalController extends Controller
 
     public function index()
     {
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You need to be logged in to see Rental Details.');
+        }
+    
         $user = Auth::user();
-        
+    
+        $bookings = Rental::where('user_id', $user->id)->get();
+    
+        foreach ($bookings as $booking) {
+            if ($booking->end_date < now() && $booking->status != 'completed') {
+                $booking->status = 'completed';
+                $booking->save(); 
+            }
+        }
+    
         $currentBookings = Rental::where('user_id', $user->id)
-            ->whereIn('status', ['ongoing','pending']) 
+            ->whereIn('status', ['ongoing', 'pending'])
             ->get();
-
+    
         $pastBookings = Rental::where('user_id', $user->id)
             ->whereIn('status', ['completed', 'cancelled'])
             ->get();
-
+    
         return view('frontend.rental.index', compact('currentBookings', 'pastBookings'));
     }
+    
+    
     public function cancel($id)
 {
     $booking = Rental::where('id', $id)->where('user_id', Auth::user()->id)->first();

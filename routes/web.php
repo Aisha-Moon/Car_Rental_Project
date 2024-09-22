@@ -52,8 +52,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Customer Routes
     Route::middleware([UserMiddleware::class])->group(function () {
-        Route::get('/bookings', [App\Http\Controllers\Frontend\RentalController::class, 'index'])->name('bookings.index'); // List user bookings
-        Route::put('/bookings/{id}/cancel', [App\Http\Controllers\Frontend\RentalController::class, 'cancel'])->name('bookings.cancel'); // Cancel booking
+        Route::get('/bookings', [App\Http\Controllers\Frontend\RentalController::class, 'index'])->name('bookings.index');
+        Route::put('/bookings/{id}/cancel', [App\Http\Controllers\Frontend\RentalController::class, 'cancel'])->name('bookings.cancel'); 
     });
 });
 
