@@ -19,14 +19,30 @@ class RentalController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'You need to be logged in to book a car.');
         }
+    
         $request->validate([
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after:start_date',
         ]);
-  
+    
         $car = Car::find($carId);
         if (!$car) {
             return redirect()->back()->withErrors(['error' => 'Car does not exist.']);
+        }
+    
+        $days = (strtotime($request->end_date) - strtotime($request->start_date)) / (60 * 60 * 24);
+        $totalCost = $car->daily_rent_price * $days;
+    
+        $status = 'pending';
+    
+        $startDate = \Carbon\Carbon::parse($request->start_date)->startOfDay();
+        $endDate = \Carbon\Carbon::parse($request->end_date)->endOfDay();
+        $currentDate = now()->startOfDay();
+    
+        if ($startDate->eq($currentDate)) {
+            $status = 'ongoing';
+        } elseif ($endDate->lt($currentDate)) {
+            $status = 'completed';
         }
     
         $rental = Rental::create([
@@ -34,22 +50,19 @@ class RentalController extends Controller
             'user_id' => Auth::id(),
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
-            'total_cost' => $car->daily_rent_price * (strtotime($request->end_date) - strtotime($request->start_date)) / (60 * 60 * 24)
+            'total_cost' => $totalCost,
+            'status' => $status
         ]);
     
-        $customerEmail = Auth::user()->email; 
-        $customerName = Auth::user()->name; 
-        
+        $customerEmail = Auth::user()->email;
+        $customerName = Auth::user()->name;
     
-       // Send emails
-       try {
-           Mail::to($customerEmail)->send(new RentalDetailsToCustomer($rental));
+        try {
+            Mail::to($customerEmail)->send(new RentalDetailsToCustomer($rental));
             Mail::to('admin@gmail.com')->send(new RentalNotificationToAdmin($customerName, $rental));
-       } catch (\Exception $e) {
-           Log::error('Email sending failed: ' . $e->getMessage());
-       }
-
-    
+        } catch (\Exception $e) {
+            Log::error('Email sending failed: ' . $e->getMessage());
+        }
     
         return redirect()->route('car.details', $carId)->with('success', 'Booking successful!');
     }
